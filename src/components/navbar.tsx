@@ -91,7 +91,7 @@ export const Navbar = () => {
               <div key={item.label} className="py-2">
                 <a
                   href={item.href}
-                  className="block text-[#1C621B] hover:text-[#A5EC60]"
+                  className="block text-[#A5EC60] hover:text-[#A5EC60]"
                 >
                   {item.label}
                 </a>
@@ -101,7 +101,7 @@ export const Navbar = () => {
                       <a
                         key={subitem.label}
                         href={subitem.href}
-                        className="block text-sm text-[#1C621B] hover:text-[#A5EC60]"
+                        className="block text-sm text-[#A5EC60] hover:text-[#A5EC60]"
                       >
                         {subitem.label}
                       </a>
@@ -110,7 +110,7 @@ export const Navbar = () => {
                 )}
               </div>
             ))}
-            <Button size="lg" className="bg-[#419310] hover:bg-[#1C621B] text-[#0B1E26] rounded-full my-2" onClick={scrollToFooter}>
+            <Button size="lg" className="bg-[#A5EC60] hover:bg-[#419310] text-[#0B1E26] rounded-full my-2" onClick={scrollToFooter}>
               Buy Now
             </Button>
           </div>

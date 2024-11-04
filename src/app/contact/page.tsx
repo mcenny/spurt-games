@@ -1,9 +1,29 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MessageSquare } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast"
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: 'Message sent',
+      description: 'Your message has been sent successfully',
+      variant: 'success',
+    });
+    setData({
+      name: '',
+      email: '',
+      message: '',
+    });
+  };
   return (
     <div className="min-h-screen about-game-bg py-20 relative">
       <div className="absolute inset-0 bg-[#0B1E26] opacity-80 z-10" />
@@ -15,7 +35,7 @@ const Contact = () => {
           <div className="p-6 bg-[#0B1E26] rounded-[16px] border border-[#1C621B]">
             <div className="p-6">
               <h2 className="text-2xl font-semibold mb-6 text-[#A5EC60]">Send us a message</h2>
-              <form className="space-y-6 text-white">
+              <form className="space-y-6 text-white" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name
@@ -23,8 +43,10 @@ const Contact = () => {
                   <input
                     type="text"
                     id="name"
-                    className="w-full p-2 border rounded-md bg-[#18333D] placeholder:text-[#419310] focus:outline-[#A5EC60]"
+                    className="w-full p-2 border rounded-md bg-[#18333D] placeholder:text-[#419310] focus:outline-[#A5EC60] rounded-[8px]"
                     required
+                    value={data.name}
+                    onChange={(e) => setData({ ...data, name: e.target.value })}
                   />
                 </div>
                 <div>
@@ -34,8 +56,10 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
-                    className="w-full p-2 border rounded-md bg-[#18333D] placeholder:text-[#419310] focus:outline-[#A5EC60]"
+                    className="w-full p-2 border rounded-md bg-[#18333D] placeholder:text-[#419310] focus:outline-[#A5EC60] rounded-[8px]"
                     required
+                    value={data.email}
+                    onChange={(e) => setData({ ...data, email: e.target.value })}
                   />
                 </div>
                 <div>
@@ -45,11 +69,13 @@ const Contact = () => {
                   <textarea
                     id="message"
                     rows={5}
-                    className="w-full p-2 border rounded-md bg-[#18333D] placeholder:text-[#419310] focus:outline-[#A5EC60]"
+                    className="w-full p-2 border rounded-md bg-[#18333D] placeholder:text-[#419310] focus:outline-[#A5EC60] rounded-[8px]"
                     required
+                    value={data.message}
+                    onChange={(e) => setData({ ...data, message: e.target.value })}
                   ></textarea>
                 </div>
-                <Button className="w-full bg-[#A5EC60] hover:bg-[#419310] text-[#0B1E26] rounded-full">
+                <Button className="w-full bg-[#A5EC60] hover:bg-[#419310] text-[#0B1E26] rounded-full" type='submit'>
                   Send Message
                   <MessageSquare className="ml-2" />
                 </Button>

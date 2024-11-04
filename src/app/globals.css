@@ -2,20 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  background-color: #0b1e26;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.hero-section {
+  background-image: url('/images/hero-background.webp');
+  background-size: cover;
+  background-position: center;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.game-contents-bg {
+  background-image: url('/images/game-content-background.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+}
+
+.about-game-bg {
+  background-image: url('/images/about-game-background.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-bg {
+  background-image: url('/images/contact-background.webp');
+  background-size: cover;
+  background-position: center;
 }
